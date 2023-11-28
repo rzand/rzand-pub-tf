@@ -1,6 +1,6 @@
 variable "private_dns_zone_name" {
   type        = string
-  default     = "privatelink.blob.core.windows.net"
+  default     = "privatelink.arr.net"
   description = "private dns zone name"
 }
 variable "private_dns_zone_rg_name" {
@@ -10,7 +10,7 @@ variable "private_dns_zone_rg_name" {
 }
 variable "private_dns_zone_vnet_id" {
   type        = string
-  default     = "/subscriptions/6a4f2ef1-e3f0-43e2-a177-e1e9b6555537/resourceGroups/rg-connectivity-core-westeurope-001/providers/Microsoft.Network/virtualNetworks/vnet-conn-we-001"
+  default     = "/subscriptions/xx/resourceGroups/rg-xx/providers/Microsoft.Network/virtualNetworks/vnet-xx"
   description = "default vnet id"
 }
 variable "private_dns_zone_tags" {
