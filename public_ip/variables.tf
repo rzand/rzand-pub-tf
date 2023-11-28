@@ -18,6 +18,26 @@ variable "pip_allocation_method" {
   default     = "Static"
   description = "public IP allocation method"
 }
+variable "pip_sku" {
+  type        = string
+  default     = "Basic"
+  description = "public IP stock keeping unit"
+}
+variable "pip_sku_tier" {
+  type        = string
+  default     = "Regional"
+  description = "public IP tier stock keeping unit"
+}
+variable "pip_ip_version" {
+  type        = string
+  default     = "IPv4"
+  description = "public IP ip version"
+}
+variable "pip_zones" {
+  type        = list(string)
+  default     = []
+  description = "public IP availability zones (Standard SKU only)"
+}
 variable "pip_tags" {
   type = map(string)
   default = {
