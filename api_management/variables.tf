@@ -28,3 +28,19 @@ variable "api_management_sku" {
   default     = "Developer_1"
   description = "api management sku"
 }
+variable "api_management_public_network_access_enabled" {
+  type        = bool
+  default     = true
+  description = "api management public access mode"
+}
+variable "api_management_virtual_network_type" {
+  type        = string
+  default     = "Internal"
+  description = "api management vnet type"
+}
+variable "api_management_virtual_network_configuration_subnet" {
+  type        = string
+  default     = ""
+  description = "api management vnet/subnet configuration"
+}
+
