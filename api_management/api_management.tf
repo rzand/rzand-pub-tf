@@ -9,6 +9,6 @@ resource "azurerm_api_management" "apim" {
   public_network_access_enabled = var.api_management_public_network_access_enabled
   virtual_network_type          = var.api_management_virtual_network_type
   virtual_network_configuration {
-    subnet_id = var.api_management_virtual_network_configuration_subnet
+    subnet_id = var.api_management_virtual_network_configuration_subnet.id
   }
 }
