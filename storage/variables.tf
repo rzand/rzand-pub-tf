@@ -23,11 +23,11 @@ variable "st_replication_type" {
   default     = "ZRS"
   description = "storage account replication type"
 }
-# variable "st_access_tier" {
-#   type        = string
-#   default     = ""
-#   description = "storage account access tier"
-# }
+variable "st_access_tier" {
+  type        = string
+  default     = ""
+  description = "storage account access tier"
+}
 variable "st_tags" {
   type = map(string)
   default = {
