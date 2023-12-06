@@ -25,7 +25,7 @@ variable "st_replication_type" {
 }
 variable "st_access_tier" {
   type        = string
-  default     = ""
+  default     = "Hot"
   description = "storage account access tier"
 }
 variable "st_tags" {
