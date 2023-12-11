@@ -42,21 +42,35 @@ variable "private_dns_resolver_private_ob_ep_subnet_id" {
   type        = string
   default     = "Dynamic"
   description = "private dns resolver inbound endpoint subnet id"
-} 
-# variable "private_dns_resolver_forwarding_rulesets" { 
-# }
+}
 variable "private_dns_resolver_forwarding_rulesets" {
   type = list(object({
-    name    = string
+    name = string
     forwarding_rules = list(object({
-          name        = string
-          domain_name = string
-          target_dns_servers = list(object({
-            ip_address = string
-            port = number
-          }))
-     }))
+      name        = string
+      domain_name = string
+      target_dns_servers = list(object({
+        ip_address = string
+        port       = number
+      }))
+    }))
   }))
+  description = "private dns resolver forwarding dns ruleset"
+  default = [{
+    name = "rls-arr-lz"
+    forwarding_rules = [
+      {
+        name        = "google-com"
+        domain_name = "google.com."
+        target_dns_servers = [
+          {
+            ip_address = "8.8.8.8"
+            port       = 53
+          }
+        ]
+      },
+    ]
+  }]
 }
 variable "private_dns_resolver_tags" {
   type = map(string)
