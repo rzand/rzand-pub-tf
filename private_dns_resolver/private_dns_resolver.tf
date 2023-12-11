@@ -49,3 +49,18 @@ resource "azurerm_private_dns_resolver_virtual_network_link" "link" {
     key = "value"
   }
 }
+output "forwarding_rules" {
+  description = "Information about the created forwarding rules"
+  value =  flatten([
+    for ruleset_name, ruleset in var.private_dns_resolver_forwarding_rulesets :
+    [
+      for rule in ruleset.forwarding_rules :
+      {
+        forwarding_ruleset_name = ruleset_name
+        forwarding_rule_name    = rule.name
+        domain_name             = rule.domain_name
+        target_dns_servers      = rule.target_dns_servers
+      }
+    ]
+  ])
+}
