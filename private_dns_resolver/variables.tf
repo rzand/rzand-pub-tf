@@ -42,7 +42,9 @@ variable "private_dns_resolver_private_ob_ep_subnet_id" {
   type        = string
   default     = "Dynamic"
   description = "private dns resolver inbound endpoint subnet id"
-}                
+} 
+variable "private_dns_resolver_forwarding_rulesets" { 
+}
 variable "private_dns_resolver_tags" {
   type = map(string)
   default = {

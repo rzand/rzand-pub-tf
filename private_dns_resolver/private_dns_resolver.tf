@@ -30,3 +30,12 @@ resource "azurerm_private_dns_resolver_outbound_endpoint" "private_dns_resolver_
   }
   tags = {}
 }
+resource "azurerm_private_dns_resolver_dns_forwarding_ruleset" "forwarding_ruleset" {
+  for_each = { for idx, ruleset in var.private_dns_resolver_forwarding_rulesets : idx => ruleset }
+
+  name                                       = each.value.name
+  resource_group_name                        = var.private_dns_resolver_rg_name
+  location                                   = var.private_dns_resolver_location
+  private_dns_resolver_outbound_endpoint_ids = [azurerm_private_dns_resolver_outbound_endpoint.private_dns_resolver_outbound_endpoint.id]
+  tags                                       = {}
+}
