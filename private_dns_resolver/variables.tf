@@ -28,12 +28,21 @@ variable "private_dns_resolver_private_ip_allocation_method" {
   default     = "Dynamic"
   description = "private dns resolver private ip allocation method"
 }
-variable "private_dns_resolver_private_in_ep_subnet_id" {
+variable "private_dns_resolver_private_ib_ep_subnet_id" {
   type        = string
   default     = "Dynamic"
   description = "private dns resolver inbound endpoint subnet id"
 }
-                  
+variable "private_dns_resolver_outbound_endpoint_name" {
+  type        = string
+  default     = "arr_priv_dns_in_ep_name"
+  description = "private dns resolver inbound endpoint name"
+}
+variable "private_dns_resolver_private_ob_ep_subnet_id" {
+  type        = string
+  default     = "Dynamic"
+  description = "private dns resolver inbound endpoint subnet id"
+}                
 variable "private_dns_resolver_tags" {
   type = map(string)
   default = {

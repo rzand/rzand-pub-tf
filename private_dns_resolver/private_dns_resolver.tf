@@ -13,6 +13,20 @@ resource "azurerm_private_dns_resolver_inbound_endpoint" "private_dns_resolver_i
 
   ip_configurations {
     private_ip_allocation_method = var.private_dns_resolver_private_ip_allocation_method
-    subnet_id                    = var.private_dns_resolver_private_in_ep_subnet_id
+    subnet_id                    = var.private_dns_resolver_private_ib_ep_subnet_id
   }
+}
+resource "azurerm_private_dns_resolver_outbound_endpoint" "private_dns_resolver_outbound_endpoint" {
+  name                    = var.private_dns_resolver_outbound_endpoint_name
+  private_dns_resolver_id = azurerm_private_dns_resolver.private_dns_resolver.id
+  location                = var.private_dns_resolver_location
+  subnet_id               = var.private_dns_resolver_private_ob_ep_subnet_id
+
+  lifecycle {
+    ignore_changes = [
+      # Ignore changes to subnet_id to prevent it from being recreated
+      subnet_id,
+    ]
+  }
+  tags = {}
 }
