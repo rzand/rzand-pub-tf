@@ -43,7 +43,20 @@ variable "private_dns_resolver_private_ob_ep_subnet_id" {
   default     = "Dynamic"
   description = "private dns resolver inbound endpoint subnet id"
 } 
-variable "private_dns_resolver_forwarding_rulesets" { 
+# variable "private_dns_resolver_forwarding_rulesets" { 
+# }
+variable "private_dns_resolver_forwarding_rulesets" {
+  type = list(object({
+    name    = string
+    forwarding_rules = list(object({
+          name        = string
+          domain_name = string
+          target_dns_servers = [{
+            ip_address = string
+            port = number
+          }]
+     }))
+  }))
 }
 variable "private_dns_resolver_tags" {
   type = map(string)
