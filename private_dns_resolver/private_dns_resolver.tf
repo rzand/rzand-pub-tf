@@ -39,3 +39,13 @@ resource "azurerm_private_dns_resolver_dns_forwarding_ruleset" "forwarding_rules
   private_dns_resolver_outbound_endpoint_ids = [azurerm_private_dns_resolver_outbound_endpoint.private_dns_resolver_outbound_endpoint.id]
   tags                                       = {}
 }
+resource "azurerm_private_dns_resolver_virtual_network_link" "link" {
+  for_each = { for idx, ruleset in var.private_dns_resolver_forwarding_rulesets : idx => ruleset }
+
+  name                      = "lz-vnet-link-${each.value.name}"
+  dns_forwarding_ruleset_id = azurerm_private_dns_resolver_dns_forwarding_ruleset.forwarding_ruleset[each.key].id
+  virtual_network_id        = var.private_dns_resolver_virtual_network_id
+  metadata = {
+    key = "value"
+  }
+}
