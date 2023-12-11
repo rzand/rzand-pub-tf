@@ -51,10 +51,10 @@ variable "private_dns_resolver_forwarding_rulesets" {
     forwarding_rules = list(object({
           name        = string
           domain_name = string
-          target_dns_servers = [{
+          target_dns_servers = list(object({
             ip_address = string
             port = number
-          }]
+          }))
      }))
   }))
 }
